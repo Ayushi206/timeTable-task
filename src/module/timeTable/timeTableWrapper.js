@@ -22,6 +22,16 @@ const TimetableWrapper = styled.div`
     color: red;
     font-size: 10px;
 }
-
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.td, .th {
+    border: 1px solid #000;
+    text-align: left;
+    padding: 8px;
+  }
 `;
 export { TimetableWrapper };
