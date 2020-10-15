@@ -12,7 +12,7 @@ const TimetableWrapper = styled.div`
     border-radius:2px;
 }
 .spacing{
-    margin:25px 0px;
+    margin:25px ;
 }
 .title{
     font-size:12px;
@@ -26,16 +26,20 @@ const TimetableWrapper = styled.div`
     font-family: arial, sans-serif;
     width: 100%;
     border:1px solid;
+    .tr{
+        border: 1px solid #000;  
+    }
+    .td, .th {
+        border: 1px solid #000;
+        text-align: left;
+        padding: 8px;
+      }
 }
 .tableTitle{
     text-align: center;
     font-size: 28px;
     font-weight: 500;
 }  
-.td, .th,.tr {
-    border: 1px solid #000;
-    text-align: left;
-    padding: 8px;
-  }
+
 `;
 export { TimetableWrapper };
