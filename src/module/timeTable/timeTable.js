@@ -1,25 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { DemoWrapper } from "./timeTableWrapper";
+import { TimetableWrapper } from "./timeTableWrapper";
 import { Redirect } from "react-router-dom";
 
-class Demo extends Component {
+class Timetable extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            numberOfSub:0
         }
     }
 
     componentDidMount() {
     }
-
+    setData = (e) =>{
+        this.setState({ numberOfSub :e});
+    }
     render() {
-        const {  } = this.state;
+        const { numberOfSub } = this.state;
         return (
-            <DemoWrapper>
-            </DemoWrapper>
+            <TimetableWrapper>
+                <input type="number" label="Number of Subject" placeholder="Enter number" onChange={(e) => this.setData(e.target.value)} value={numberOfSub ? numberOfSub : ""} />
+            </TimetableWrapper>
         )
     }
 }
 
-export default Demo;
+export default Timetable;

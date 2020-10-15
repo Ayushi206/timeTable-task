@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-const DemoWrapper = styled.div`
+const TimetableWrapper = styled.div`
 `;
-export { DemoWrapper };
+export { TimetableWrapper };

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Demo from './module/timeTable/timeTable';
+import Timetable from './module/timeTable/timeTable';
 import {
   BrowserRouter as Router,
     Route,
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-        <Route path="/" component={Demo} />
+        <Route path="/" component={Timetable} />
         </Switch>
     </Router>
     </div>
