@@ -4,7 +4,7 @@ import Timetable from './module/timeTable/timeTable';
 import {
   BrowserRouter as Router,
     Route,
-    Switch,Redirect
+    Switch
   } from 'react-router-dom';
 function App() {
   return (

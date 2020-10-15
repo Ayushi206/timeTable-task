@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { TimetableWrapper } from "./timeTableWrapper";
-import { Redirect } from "react-router-dom";
 
 class Timetable extends Component {
     constructor(props) {
@@ -64,7 +62,6 @@ class Timetable extends Component {
         }
     }
     render() {
-        console.log(this.state.subjects, this.state.totalSubjects)
         const { numberOfSub, subjectShow, subjects, tableShow, totalSubjects, submitted, submitted1 } = this.state;
         return (
             <TimetableWrapper>
@@ -123,6 +120,9 @@ class Timetable extends Component {
                     : ""}
             </TimetableWrapper>
         )
+    }
+    componentWillUnmount(){
+        this.setState({subjects:[],totalSubjects:[],submitted:false,submitted1:false,numberOfSub:0,})
     }
 }
 
