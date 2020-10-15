@@ -11,7 +11,8 @@ class Timetable extends Component {
             subjects:[],
             subjectShow:false,
             tableShow:false,
-            totalSubjects:[]
+            totalSubjects:[],
+            submitted:false
         }
     }
 
@@ -20,11 +21,13 @@ class Timetable extends Component {
     setData = (type,e,i) =>{
         const { subjects } = this.state;
         if(type === "number"){
-        let a =[]
-        for(let i=0;i< e;i++){
-            a.push({subjectName:""});        
-        }
-        this.setState({ numberOfSub :e , subjects : a});
+            const r = /^[0-9.,]+$/;
+            if ((r.test(e))) {
+                let a =[]
+                for(let i=0;i< e;i++){
+                    a.push({subjectName:""});        
+                }
+                this.setState({ numberOfSub :e , subjects : a});            }
         }
         else {
             subjects[i].subjectName = e;
@@ -32,6 +35,11 @@ class Timetable extends Component {
         }
     }
     addNumber = (e) => {
+        this.setState({submitted : true});
+        const { numberOfSub } = this.state;
+        if(!numberOfSub){
+            return;
+        }
         this.setState({ subjectShow : true})
     }
     generate = () => {
@@ -44,14 +52,20 @@ class Timetable extends Component {
     }
     render() {
         console.log(this.state.subjects,this.state.totalSubjects)
-        const { numberOfSub , subjectShow , subjects,tableShow} = this.state;
+        const { numberOfSub , subjectShow , subjects,tableShow,totalSubjects,submitted} = this.state;
         return (
             <TimetableWrapper>
                 {!subjectShow ? 
                 <>
                     <div className="spacing">
                     <div className="title">Numer of Subject</div>
-                        <input type="number" label="Number of Subject" placeholder="Enter number" onChange={(e) => this.setData("number",e.target.value)} value={numberOfSub ? numberOfSub : ""} />
+                        <input label="Number of Subject" placeholder="Enter number" onChange={(e) => this.setData("number",e.target.value)} value={numberOfSub ? numberOfSub : ""} />
+                        {submitted && !numberOfSub && (
+                            <div className="errorText">
+                            Number required<sup>*</sup>
+                            </div>
+                        )}
+
                     </div>
                     <div className="spacing">
                         <button className="buttonStyle" onClick={(e) => this.addNumber(e)}>Submit</button>
@@ -70,7 +84,18 @@ class Timetable extends Component {
                 </>
                 }
                 {tableShow ? 
-                    <table></table>
+                    <table>
+                        {totalSubjects.map((a,i) => 
+                        <>  
+                            <thead>
+                            <th>Subject Name</th>
+                            </thead>
+                            <tbody>
+                            <td>{a.subjectName}</td>
+                            </tbody>
+                        </>
+                        )}
+                    </table>
                 :""}
             </TimetableWrapper>
         )

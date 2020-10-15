@@ -18,5 +18,10 @@ const TimetableWrapper = styled.div`
     font-size:12px;
     color:#000;
 }
+.errorText{
+    color: red;
+    font-size: 10px;
+}
+
 `;
 export { TimetableWrapper };
