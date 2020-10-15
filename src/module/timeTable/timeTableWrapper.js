@@ -24,11 +24,15 @@ const TimetableWrapper = styled.div`
 }
 .table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
     width: 100%;
-  }
-  
-.td, .th {
+    border:1px solid;
+}
+.tableTitle{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+}  
+.td, .th,.tr {
     border: 1px solid #000;
     text-align: left;
     padding: 8px;

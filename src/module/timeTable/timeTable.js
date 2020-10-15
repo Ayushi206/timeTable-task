@@ -47,17 +47,20 @@ class Timetable extends Component {
         this.setState({ subjectShow : true})
     }
     generate = () => {
-        const { totalSubjects } = this.state;
+        const { totalSubjects , subjects } = this.state;
         this.setState({submitted1 : true});
-        totalSubjects.map((a,i) => {
+        let check;
+        subjects.map((a,i) => {
         if(!a.subjectName){
-            return;
+            check = true;
         }
         })
+        if(check === undefined){
         this.state.subjects.map((a,i) => 
             totalSubjects.push({subjectName:a.subjectName})
         )
         this.setState({totalSubjects,tableShow:true})
+        }
     }
     render() {
         console.log(this.state.subjects,this.state.totalSubjects)
@@ -87,7 +90,7 @@ class Timetable extends Component {
                         <input label="Number of Subject" placeholder="Enter subject name" onChange={(e) => this.setData("name",e.target.value,i)} value={a.subjectName ? a.subjectName : ""} />
                         {submitted1 && !a.subjectName && (
                         <div className="errorText">
-                            Number required<sup>*</sup>
+                            Subject Name required<sup>*</sup>
                         </div>
                         )}
                     </div>
@@ -97,7 +100,26 @@ class Timetable extends Component {
                     </div>
                 </>
                 :""}
-               
+                {tableShow ? 
+                    <>
+                    <div className="tableTitle">Time Table</div>
+                    <table className="table">
+                        <>  
+                            <tr>
+                            {totalSubjects.map((a,i) => 
+
+                            <th>Subject Name</th>
+                            )}
+                            </tr>
+                            <tr>
+                            {totalSubjects.map((a,i) => 
+                            <td>{a.subjectName}</td>
+                            )}
+                            </tr>
+                        </>
+                    </table>
+                    </>
+                :""}
             </TimetableWrapper>
         )
     }
